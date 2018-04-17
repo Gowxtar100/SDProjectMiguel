@@ -47,5 +47,24 @@
              </div> 
           </div>
         </nav>
+        
+        <div class="container whitebackground"> 
+            <form action="passemail.php" method="post">
+				<div class="col-md-6 col-md-offset-3 form-line">
+			  			<div class="form-group">
+			  				<label for="username">Enter your username: </label>
+					    	<input type="text" class="form-control" name="username" placeholder=" Enter username">
+				  		</div>
+					  	<div class="form-group">
+					    	<label for="email">Enter your associated email address : </label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter your email:">
+                            
+			  			</div>
+                        <button  value="Submit" name="Submit" class="btn btn-danger submit">Login</button>
+                        
+			  		</div>
+			  		
+            </form>
+        </div>   
     </body>
 </html>

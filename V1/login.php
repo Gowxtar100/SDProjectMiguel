@@ -1,3 +1,7 @@
+<?php
+    define('access',true);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -25,14 +29,14 @@
               <li><a href="index.php">Home</a></li>
               <li><a href="products.php">Products</a></li>
               <li><a href="contact.php">Contact Us</a></li>
-              <li class="active" ><a href="help.php">Help</a></li>
+              <li><a href="help.php">Help</a></li>
               <li><a href="about.php">About Us</a></li>
             </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
-                <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li ><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li class="active"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
               </ul>
             
             <div class="col-sm-4 col-md-4 pull-right">
@@ -47,5 +51,24 @@
              </div> 
           </div>
         </nav>
+        
+        <div class="container whitebackground"> 
+            <form action="loginconnection.php" method="post">
+				<div class="col-md-6 col-md-offset-3 form-line">
+			  			<div class="form-group">
+			  				<label for="username">Enter your username:</label>
+					    	<input type="text" class="form-control" name="username" placeholder=" Enter username">
+				  		</div>
+					  	<div class="form-group">
+					    	<label for="password">Enter your password: </label>
+                            <input type="password" class="form-control" name="password" placeholder="Enter your password">
+                            
+			  			</div>
+                        <button  value="Submit" name="Submit" class="btn btn-danger submit">Login</button><br><br>
+                        <p><a href="passforget.php"> Forgot Password ? </a></p>
+			  		</div>
+			  		
+            </form>
+        </div>        
     </body>
 </html>
