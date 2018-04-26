@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    if (isset($_SESSION['username'])){
+        $tempuser = $_SESSION["username"];
+        $logcheck = '<li><a href="userprofile.php"><span class="glyphicon glyphicon-user"></span>Welcome, '.$tempuser.'</a></li>';
+    }
+    else{
+        $logcheck = '<li ><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li class="active"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -33,8 +44,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
-                <li><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <?php echo $logcheck; ?>
               </ul>
             
             <div class="col-sm-4 col-md-4 pull-right">

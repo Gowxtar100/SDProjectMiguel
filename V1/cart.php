@@ -6,7 +6,16 @@
 
     $db = 'gamedatabase';
 
-    $db = new mysqli('localhost', $connectusername, $connectpassword, $db) or die("Unable to connect");
+    $db = new mysqli('localhost', $connectusername, $connectpassword, $db) or die("Unable to connect");<?php
+
+    if (isset($_SESSION['username'])){
+        $tempuser = $_SESSION["username"];
+        $logcheck = '<li><a href="userprofile.php"><span class="glyphicon glyphicon-user"></span>Welcome, '.$tempuser.'</a></li>';
+    }
+    else{
+        $logcheck = '<li ><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li class="active"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
+    }
 ?>
 
 <!DOCTYPE html>
