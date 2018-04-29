@@ -58,3 +58,46 @@
              </div> 
           </div>
         </nav>
+        <?php
+            $link = mysqli_connect("localhost", "root", "", "gamedatabase");
+				if (mysqli_connect_errno()) {
+					echo "<div class=\"alert alert-error\">Error connecting to DB...".mysqli_connect_error()."</div>";
+					
+					exit;
+				}
+
+				
+				//create the SQL statement
+				$query = "SELECT * FROM stock";
+				
+				//pass the $query to MySQL through the connection ($link)
+				$result = mysqli_query($link, $query);
+        
+                
+				
+				
+        ?>
+        <div class="container whitebackground">
+        <h2 class="alignedcenter"> List of available products:</h2>
+        <table class="table">
+            
+				<tr>
+					<th>Game Name</th>
+					<th>Price</th>
+                  
+				</tr>
+				<?php
+					//process $result
+					while ($row = mysqli_fetch_assoc($result)) {     
+						echo "<tr>";
+							echo "<td>".$row['name']."</td>";
+                            echo "<td>"."$".$row['price']."</td>";
+							echo "<td><a class=\"btn btn-danger\" href=\"detailedinfo.php?id=".$row['id']."\">More Information</a></td>";
+                        echo "</tr>";
+					}
+					
+				?>
+			</table>
+        </div>
+    </body>
+</html>

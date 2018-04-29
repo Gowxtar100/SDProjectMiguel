@@ -41,3 +41,20 @@ body{
     
 }
 
+#stocktable{
+    margin-top: 0px;
+    background-color: white;
+    
+}
+
+.tablecss{
+    background-color: white;
+    margin: 0 auto;
+}
+
+.tablediv {
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+}

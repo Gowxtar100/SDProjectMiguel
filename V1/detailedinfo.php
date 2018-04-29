@@ -8,7 +8,29 @@
         $logcheck = '<li ><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li class="active"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
     }
+	
+
+    if (isset($_GET['id'])) {
+		
+		$id = $_GET['id'];
+    }
+     $link = mysqli_connect("localhost", "root", "", "gamedatabase");
+					if (mysqli_connect_errno()) {
+						echo "<div class=\"alert alert-error\">Error connecting to DB...".mysqli_connect_error()."</div>";
+						exit;
+					}
+				
+				$query1 = "SELECT * FROM STOCK WHERE id=".$id;
+               
+
+            $result = mysqli_query($link, $query1);
+            
+
+           
+            
+					
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,9 +57,9 @@
             </div>
             <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
-              <li><a href="products.php">Products</a></li>
+              <li  class="active"><a href="products.php">Products</a></li>
               <li><a href="contact.php">Contact Us</a></li>
-              <li class="active" ><a href="help.php">Help</a></li>
+              <li><a href="help.php">Help</a></li>
               <li><a href="about.php">About Us</a></li>
             </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -58,55 +80,29 @@
              </div> 
           </div>
         </nav>
-        
-        <div  class="container aboutdiv">
-            <h3> FAQ </h3><hr>
-            <p>
-              <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
-                Can I make purchases even If i do not have an account ? 
-              </a>
-          
-            </p>
-            <div class="collapse" id="collapseExample2">
-              <div class="card card-body">
-                Yes, however your cart will not be saved if you exit the website. 
-              </div>
-        </div>
-        <p>
-              <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-               Does registering an account cost money ?
-              </a>
-          
-            </p>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">
-                No.
-              </div>
-        </div>
-        <p>
-              <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
-               What types of payment does Concept Game Box accept ?
-              </a>
-          
-            </p>
-            <div class="collapse" id="collapseExample3">
-              <div class="card card-body">
-                All types of main stream payments are accepted<br>
-                This includes Credit Cards,Debit Cards,MasterCard and PayPal
-              </div>
-        </div>
-            <p>
-              <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample4">
-               When will  games purchased be delivered ?
-              </a>
-          
-            </p>
-            <div class="collapse" id="collapseExample4">
-              <div class="card card-body">
-                As soon as the order is processed on confirmed, a delivery man will be deployed in an estimate of 2-3 days.
-              </div>
-        </div>
+        <div class="container whitebackground">
+            <table class="table">
             
+				<tr>
+					<th>Game Name</th>
+					<th>Price</th>
+                    <th>Remaning:</th>
+                  
+				</tr>
+				<?php
+					//process $result
+					while ($row = mysqli_fetch_assoc($result)) {     
+						echo "<tr>";
+							echo "<td>".$row['name']."</td>";
+                            echo "<td>"."$".$row['price']."</td>";
+                            echo "<td>".$row['stock']."</td>";
+							
+                        echo "</tr>";
+					}
+					
+				?>
+			</table>
         </div>
+        
     </body>
 </html>

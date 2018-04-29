@@ -15,16 +15,22 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="icon" href="Images/Logo.png">
+        <style>
+            .buttonclass{
+                background-color: indianred;
+                color:white;
+            }
+        </style>
     </head>
     <body>
         
         <div class="container homediv">Welcome, <?php echo $_SESSION['username'];  ?><br>
         <p> Please select an option </p>
-        <a href="logindex.php"><button type="button" href="logindex.php" class="btn btn-success">Go back</button></a>
-       <a href="logout.php"><button type="button" href="logout.php" class="btn btn-danger">Logout</button></a>
-        <a href="change.php"><button type="button" href="changemail/change.php" class="btn btn-warning">Change Registered Email</button></a>
+        <a href="logindex.php"><button type="button" href="logindex.php" class="btn buttonclass">Go back</button></a>
+       <a href="logout.php"><button type="button" href="logout.php" class="btn buttonclass">Logout</button></a>
+        <a href="change.php"><button type="button" href="changemail/change.php" class="btn buttonclass">Change Registered Email</button></a>
             </div>
         
         
     </body>
-</html>
+</html
