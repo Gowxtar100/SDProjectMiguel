@@ -44,18 +44,29 @@
               </ul>
             
             <div class="col-sm-4 col-md-4 pull-right">
-                <form class="navbar-form" role="search">
+                <form class="navbar-form" role="search" method="post" action="searchlogic.php">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" name="searchbar" class="searchbar">
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        <button class="btn btn-default" type="submit" value="Submit" name="Submit"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </div>
                 </form>
-             </div> 
+             </div>
           </div>
         </nav>
-        
+        <?php
+    
+              
+        if (isset($_GET['error'])) {
+		 
+		switch($_GET['error']){
+            case 1 : echo '<div class="alert alert-danger"><strong>Error! </strong>Email or User already taken !</div>';
+            break;
+                
+        }
+    }
+        ?>
         <div class="container whitebackground"> 
             <form action="connection.php" method="post">
 				<div class="col-md-6 col-md-offset-3 form-line">

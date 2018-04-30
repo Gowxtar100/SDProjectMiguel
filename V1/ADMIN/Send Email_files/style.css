@@ -1,0 +1,60 @@
+
+.Logo{
+    max-width: 70px;
+}
+
+body{
+    background: #3a6186; /* fallback for old browsers */
+  background: linear-gradient(to left, #3a6186 , #89253e);
+    
+}
+
+.carousel {
+  max-width:900px;
+  max-height:600px;
+  
+}
+
+.searchbar{
+    margin-top: 5px;
+}
+
+
+.homediv{
+    margin-top: 10px;
+    text-align: center;
+    background-color: white;
+    
+}
+
+ ul.nav a:hover { 
+     background-color: lightgrey !important; color: black !important; 
+}
+
+.aboutdiv{
+    text-align: left;
+    background-color: white;
+}
+
+.whitebackground{
+    background-color:  white;
+    
+}
+
+#stocktable{
+    margin-top: 0px;
+    background-color: white;
+    
+}
+
+.tablecss{
+    background-color: white;
+    margin: 0 auto;
+}
+
+.tablediv {
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+}

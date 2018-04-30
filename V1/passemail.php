@@ -1,6 +1,6 @@
 <?php
     // Import PHPMailer 
-
+    
             use PHPMailer\PHPMailer\PHPMailer;
             use PHPMailer\PHPMailer\Exception;
 
@@ -33,17 +33,21 @@
         //If a user is found 
         
         if ($matchedusers == 1){
+        session_start();
 
-        $password = rand(999, 99999);
-        $password_hashed = md5($password);
-        $query = "UPDATE user SET password='$password_hashed' WHERE username='$Username'";
-        $passresult = mysqli_query($db,$query);
-
+        $idquery = "SELECT id FROM `user` WHERE username='$Username' and email='$Email'";
+        $idresult = mysqli_query($db,$idquery);
+        $idtoken = mysqli_fetch_assoc($idresult);
+        $_SESSION['id'] = $idtoken['id']; 
+        $created = time();
+        $expires = $created + (3600);
         
         $Topic = 'Forgotten Password - Concept Box';
-        $Message = '<br> Dear, '.$Username.'<br><br><b> Your new password is:</b> '.$password_hashed.'<br><br> If it was not you who requested a password change contact us immediately';
+        $Message = '<br> Dear, '.$Username.'<br><br><b> <a href="http://localhost/v1/changepassword.php?expires='.$expires.'&created='.$created.'">Change your password here</a><br><br><b>Please note that this link will expire in 1 hour</b><br><br> If it was not you who requested a password change contact us immediately';
+        
+        
       
-        if($passresult){
+        if($idquery){
         $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
             try {
                 //Server settings

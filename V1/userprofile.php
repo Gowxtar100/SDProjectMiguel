@@ -26,7 +26,7 @@
         
         <div class="container homediv">Welcome, <?php echo $_SESSION['username'];  ?><br>
         <p> Please select an option </p>
-        <a href="logindex.php"><button type="button" href="logindex.php" class="btn buttonclass">Go back</button></a>
+        <a href="index.php"><button type="button" href="index.php" class="btn buttonclass">Go back</button></a>
        <a href="logout.php"><button type="button" href="logout.php" class="btn buttonclass">Logout</button></a>
         <a href="change.php"><button type="button" href="changemail/change.php" class="btn buttonclass">Change Registered Email</button></a>
             </div>

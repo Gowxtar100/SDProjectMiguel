@@ -47,11 +47,11 @@
               </ul>
             
             <div class="col-sm-4 col-md-4 pull-right">
-                <form class="navbar-form" role="search">
+                <form class="navbar-form" role="search" method="post" action="searchlogic.php">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" name="searchbar" class="searchbar">
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        <button class="btn btn-default" type="submit" value="Submit" name="Submit"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </div>
                 </form>
@@ -91,7 +91,7 @@
             </p>
             <div class="collapse" id="collapseExample3">
               <div class="card card-body">
-                All types of main stream payments are accepted<br>
+                All types of mainstream payments are accepted<br>
                 This includes Credit Cards,Debit Cards,MasterCard and PayPal
               </div>
         </div>

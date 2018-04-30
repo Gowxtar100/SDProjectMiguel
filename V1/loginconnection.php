@@ -17,10 +17,11 @@
         if (isset($_POST['Submit'])) {
         $Username = $_POST["username"];
         $Password = $_POST["password"];
+        $PasswordHashed = hash('sha256',$Password);
         
     //Checks if users exsist in database
     
-        $sqlquery = "SELECT * FROM `user` WHERE username='$Username' and password='$Password'";
+        $sqlquery = "SELECT * FROM `user` WHERE username='$Username' and password='$PasswordHashed'";
         
         $result = mysqli_query($db, $sqlquery) or die(mysqli_error($db));
         $matchedusers = mysqli_num_rows($result);

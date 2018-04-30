@@ -60,7 +60,7 @@
                             <input type="email" class="form-control" name="email" placeholder="Enter your email:">
                             
 			  			</div>
-                        <button  value="Submit" name="Submit" class="btn btn-danger submit">Login</button>
+                        <button  value="Submit" name="Submit" class="btn btn-danger submit">Request Password</button>
                         
 			  		</div>
 			  		
