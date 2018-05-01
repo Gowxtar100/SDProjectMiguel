@@ -68,6 +68,19 @@ session_start();
                 break;
         }
     }
+              
+    
+              
+        if (isset($_GET['error'])) {
+		 
+		switch($_GET['error']){
+            case 1 : echo '<div class="alert alert-danger"><strong>Error! </strong>Invalid credentials!</div>';
+            break;
+            
+                
+        }
+    }
+  
 
         
         

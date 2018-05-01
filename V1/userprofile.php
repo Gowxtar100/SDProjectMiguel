@@ -22,6 +22,20 @@
             }
         </style>
     </head>
+    <?php
+    
+              
+        if (isset($_GET['changed'])) {
+		 
+		switch($_GET['changed']){
+            case 1 : echo '<div class="alert alert-success"><strong>Success!</strong> Email has been changed successfully.</div>';
+            break;
+            case 2 : echo '<div class="alert alert-danger"><strong>Error! </strong>Incorrect credentials !</div>';
+            break;
+                
+        }
+    }
+        ?>
     <body>
         
         <div class="container homediv">Welcome, <?php echo $_SESSION['username'];  ?><br>

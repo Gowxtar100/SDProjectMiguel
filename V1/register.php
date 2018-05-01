@@ -63,6 +63,8 @@
 		switch($_GET['error']){
             case 1 : echo '<div class="alert alert-danger"><strong>Error! </strong>Email or User already taken !</div>';
             break;
+            case 2 : echo '<div class="alert alert-danger"><strong>Error! </strong>Please fill in all the fields</div>';
+            break;
                 
         }
     }

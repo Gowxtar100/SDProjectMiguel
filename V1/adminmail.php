@@ -65,6 +65,7 @@
 		switch($_GET['sent']){
             case 1 : echo '<div class="alert alert-success"><strong>Success!</strong> Email has been sent to client !</div>';
             break;
+            case 2 : echo '<div class="alert alert-danger"><strong>Error! </strong>Invalid Email Address</div>';
             
         }
     }

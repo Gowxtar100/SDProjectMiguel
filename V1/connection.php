@@ -27,7 +27,7 @@ if (isset($_POST['Submit'])) {
     
     
     
-    
+    if(!empty($Username)&&!empty($EmailAdd)&&!empty($Password)){
      $query = "INSERT INTO `user` (username, email, password) VALUES ('$Username', '$EmailAdd', '$PasswordHashed')";
     
         $Topic = 'Registration Completed';
@@ -71,6 +71,10 @@ if (isset($_POST['Submit'])) {
         }else{
            header('Location: register.php?error=1');
         }
+    }
+    else{
+        header('Location: register.php?error=2');
+    }
     
    
 }

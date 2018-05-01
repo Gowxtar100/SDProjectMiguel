@@ -19,10 +19,11 @@
         $Password = $_POST["password"];
         $NewEmail = $_POST["newmail"];
         $Username = $_SESSION['username'];
+        $HashedPassword = hash('sha256',$Password);
         
     //Checks if password matches in database
     
-        $sqlquery = "SELECT * FROM `user` WHERE username='$Username' and password='$Password'";
+        $sqlquery = "SELECT * FROM `user` WHERE username='$Username' and password='$HashedPassword'";
         
         $result = mysqli_query($db, $sqlquery) or die(mysqli_error($db));
         $matchedusers = mysqli_num_rows($result);
@@ -31,10 +32,10 @@
         if ($matchedusers == 1){
         $sqlquery2 = "UPDATE user SET email ='$NewEmail' WHERE username = '$Username'";
         $result = mysqli_query($db, $sqlquery2) or die(mysqli_error($db));
-        header('Location: changemail0.php');
+        header('Location: userprofile.php?changed=1');
         }else{
         //If username or password incorrect display message
-        header('Location: changemail1.php');
+        header('Location: userprofile.php?changed=2');
         
 
             }

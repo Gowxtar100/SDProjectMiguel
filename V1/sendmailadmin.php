@@ -39,7 +39,7 @@
                 $mail->send();
                header('Location: adminmail.php?sent=1');
             } catch (Exception $e) {
-                echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                header('Location: adminmail.php?sent=2');
             }
     }
 ?>

@@ -31,7 +31,7 @@
         $_SESSION['username'] = $Username;
         }else{
         //If username or password incorrect display message
-        header('Location: loginfail.php');
+        header('Location: login.php?error=1');
         
 ;
             }
