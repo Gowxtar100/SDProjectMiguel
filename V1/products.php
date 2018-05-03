@@ -8,6 +8,7 @@
         $logcheck = '<li ><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li class="active"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@
               <li><a href="about.php">About Us</a></li>
             </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                <li><a href="viewcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart( <?php echo count($_SESSION["totalprice"]).')' ?></a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
                 <?php echo $logcheck; ?>
               </ul>
@@ -72,6 +73,16 @@
 				
 				//pass the $query to MySQL through the connection ($link)
 				$result = mysqli_query($link, $query);
+        
+            if (isset($_GET['added'])) {
+
+            switch($_GET['added']){
+                case 1 : echo '<div class="alert alert-success"><strong>Success!</strong> Product has been added to cart</div>';
+                break;
+
+              
+            }
+        }
         
                 
 				

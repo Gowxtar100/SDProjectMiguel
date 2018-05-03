@@ -39,7 +39,8 @@
 
         if (isset($_SESSION['username'])){
         $Username = $_SESSION['username'];
-        
+         
+            
         header('Location: index.php');
        
         

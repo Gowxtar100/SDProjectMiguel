@@ -1,18 +1,21 @@
 <?php
 session_start();
+if (!isset($_SESSION['cart'])) {
+        $_SESSION["cart"] = array();
+        $_SESSION["totalprice"] = array();
+     }
+     else {
+         $productid = $_SESSION["productid"];
+         $price =  $_SESSION["productprice"];
+         
 
 
 
-    $price = $_SESSION["productprice"];
-    $productid = $_SESSION["productid"];
-    
-    $cart = array($price,$productid);
-        $arrlength = count($cart);
+    $_SESSION["cart"][]= $productid;
+    $_SESSION["totalprice"][] = $price;
 
-    for($x = 0; $x < $arrlength; $x++) {
-        echo $cart[$x];
-        echo "<br>";
-    }
-   
+    header("Location: products.php?added=1");
+     }    
+
 
 ?>
