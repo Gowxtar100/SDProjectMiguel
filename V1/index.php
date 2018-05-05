@@ -8,6 +8,10 @@
         $logcheck = '<li ><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li class="active"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
     }
+if (!isset($_SESSION['cart'])) {
+        $_SESSION["cart"] = array();
+        $_SESSION["totalprice"] = array();
+     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +45,7 @@
             </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="viewcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart( <?php echo count($_SESSION["totalprice"]).')' ?></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
+                <li><a href="checkout.php"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
                 <?php echo $logcheck; ?>
                
 
@@ -60,6 +64,17 @@
              </div> 
           </div>
         </nav>
+        <?php
+        if (isset($_GET['purchase'])) {
+		 
+		switch($_GET['purchase']){
+            case 1 : echo '<div class="alert alert-success"><strong>Success ! </strong> Your order was sent and is awaiting confirmation !</div>';
+            break;
+
+                
+        }
+    }
+        ?>
             <!-- IMAGE SLIDESHOW -->
             <div class="container">
             <div class="row">

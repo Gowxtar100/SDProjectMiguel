@@ -43,7 +43,7 @@
             </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="viewcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart( <?php echo count($_SESSION["totalprice"]).')' ?></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
+                <li><a href="checkout.php"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
                 <?php echo $logcheck; ?>
               </ul>
             
@@ -88,8 +88,8 @@
 				
 				
         ?>
-        <div class="container whitebackground">
-        <h2 class="alignedcenter"> List of available products:</h2>
+        <div class="container whitebackground">  
+        <h2> List of available products:</h2>
         <table class="table">
             
 				<tr>
@@ -109,6 +109,10 @@
 					
 				?>
 			</table>
+            <a class="btn btn-danger" href="detailedinfo.php?id=1">Reccomended product</a>
+            
+         
+            
         </div>
     </body>
 </html>

@@ -64,16 +64,16 @@
             </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="viewcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart( <?php echo count($_SESSION["totalprice"]).')' ?></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
+                <li><a href="checkout.php"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
                 <?php echo $logcheck; ?>
               </ul>
             
             <div class="col-sm-4 col-md-4 pull-right">
-                <form class="navbar-form" role="search">
+                <form class="navbar-form" role="search" method="post" action="searchlogic.php">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search" name="searchbar" class="searchbar">
                     <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        <button class="btn btn-default" type="submit" value="Submit" name="Submit"><i class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </div>
                 </form>

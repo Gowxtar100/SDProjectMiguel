@@ -1,24 +1,55 @@
 <?php
     session_start();
     if (!isset($_SESSION['cart'])) {
-        $_SESSION["cart"] = array();
-        $_SESSION["totalprice"] = array();
+        header('Location : viewcart.php');
      }
     
-    $totalprice = array_sum($_SESSION["totalprice"]);
                             
     if (isset($_SESSION['username'])){
         $tempuser = $_SESSION["username"];
         $logcheck = '<li><a href="userprofile.php"><span class="glyphicon glyphicon-user"></span>Welcome, '.$tempuser.'</a></li>';
-        $totalprice = $totalprice * 0.90;
     }
     else{
         $logcheck = '<li ><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li class="active"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';
     }
-    
-?>
 
+    if (isset($_POST['Submit'])) {
+        
+    $name = $_POST["name"];
+    $address = $_POST["address"];
+    $payment = $_POST["typepayment"];
+    $price = $_POST["totalprice"];
+    $email = $_POST["email"];
+    
+    switch($address){
+            case 'visa':
+            $payment = "VISA";
+                break;
+            case 'paypal':
+            $payment = 'PAYPAL';
+            break;
+            case 'mastercard':
+            $payment = 'MASTERCARD';
+            break;
+            case 'creditcard':
+            $payment = 'CREDIT CARD';
+            break;
+            case 'debitcard':
+            $payment = 'DEBIT CARD';
+            break;
+        } 
+    }
+    else{
+        header('Location: checkout.php?error=1');
+    }
+    if(empty($name) || empty($address) || empty($email)){
+        header('Location: checkout.php?error=1');
+
+        }
+    
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,7 +81,7 @@
               <li><a href="about.php">About Us</a></li>
             </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="viewcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart( <?php echo count($_SESSION["totalprice"]).')' ?></a></li>
+                <li><a href="viewcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart( <?php echo count($_SESSION["totalprice"]).')' ?></a></li>
                 <li><a href="checkout.php"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
                 <?php echo $logcheck; ?>
               </ul>
@@ -64,21 +95,20 @@
                     </div>
                 </div>
                 </form>
-             </div> 
+             </div>
           </div>
         </nav>
-        <?php
-        if (isset($_GET['empty'])) {
-		 
-		switch($_GET['empty']){
-            case 1 : echo '<div class="alert alert-danger"><strong>Error! </strong>You cannot checkout an empty cart !</div>';
-            break;
-        }
-    }
-        ?>
-    
-        <div class="container whitebackground">
-            <table class="table">
+        
+        <div class="container whitebackground"> 
+				<div class="col-md-6 col-md-offset-3 form-line">
+                <h2> YOUR RECEIPT: </h2><br>
+			     <p><b>CUSTOMER NAME : </b><?php echo $name ?> </p><br> 	
+                 <p><b>ADDRESS : </b><?php echo $address ?> </p><br> 
+                <p><b>PAYMENT TYPE : </b><?php echo $payment ?> </p><br>
+                <p><b>EMAIL : </b><?php echo $email ?> </p><br><br>
+                
+                <h3> YOUR ORDER : </h3>
+                <table class="table">
             
 				<tr>
 					<th>Game Name</th>
@@ -114,26 +144,19 @@
                  }
                 
                 
-    
-					
-				?>
+    ?>
 			</table>
-            <?php 
-            
-            
-                                    
-            echo '<div class="alert alert-info"><strong>Total price is: $'.$totalprice;
-            echo '</strong></div>';
-            if($result == false){ 
-                    echo '<div class="alert alert-info"><strong>Cart is empty </strong></div>';
-                }
-            if (isset($_SESSION['username'])){
-            echo '<div class="alert alert-info"><strong>You receive a 10% registered user discount ! </strong></div>';
-    }
-          ?>
-            <a href="clearcart.php" class="btn btn-danger submit">Clear Cart </a>
-            <a href="checkout.php" class="btn btn-danger submit">Checkout </a>
-        </div>
-        
+            <h2> TOTAL PRICE : $<?php echo $price  ?></h2>
+                    
+                <form action="confirmorder.php" method="post">
+                    <input type="hidden" name="payment" value= <?php echo $payment ?> />
+                    <input type="hidden" name="address" value= <?php echo $address ?> />
+                    <input type="hidden" name="name" value= <?php echo $name ?> />
+                    <input type="hidden" name="price" value= <?php echo $price ?> />
+                    <input type="hidden" name="email" value= <?php echo $email ?> />
+                    <button  type="submit" value="Submit" name="Submit" class="btn btn-danger submit">Confirm & Pay</button>
+                </form>  
+			 </div>
+        </div>   
     </body>
 </html>

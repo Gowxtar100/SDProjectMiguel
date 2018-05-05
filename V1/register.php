@@ -38,7 +38,7 @@
             </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="viewcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart( <?php echo count($_SESSION["totalprice"]).')' ?></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
+                <li><a href="checkout.php"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
                 <li class="active"><a href="register.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
               </ul>
@@ -64,6 +64,8 @@
             case 1 : echo '<div class="alert alert-danger"><strong>Error! </strong>Email or User already taken !</div>';
             break;
             case 2 : echo '<div class="alert alert-danger"><strong>Error! </strong>Please fill in all the fields</div>';
+            break;
+            case 3: echo '<div class="alert alert-danger"><strong>Error! </strong>Email address is not valid !</div>';
             break;
                 
         }

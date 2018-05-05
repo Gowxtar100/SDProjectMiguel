@@ -43,7 +43,7 @@
             </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="viewcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart( <?php echo count($_SESSION["totalprice"]).')' ?></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
+                <li><a href="checkout.php"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
                 <?php echo $logcheck; ?>
               </ul>
             
@@ -64,9 +64,9 @@
             <h3> About us</h3><hr>
             <p> Our store sells a variety of games for most of the available systems such as : PC/PS3/PS4/XBOX 360 and XBOX ONE. Most of the games that are sold are region registered in the EU.</p><br>
             <p> You can also find us on: </p><br>
-            <a href="www.facebook.com"> <b>Facebook /  </b></a> 
-            <a href="www.instagram.com"> <b>Instagram /  </b></a>
-            <a href="www.twitter.com"> <b>Twitter</b></a><br><br>
+            <a href="https://www.facebook.com/"><b>Facebook /  </b></a> 
+            <a href="https://www.instagram.com/"> <b>Instagram /  </b></a>
+            <a href="https://www.twitter.com/"> <b>Twitter</b></a><br><br>
             
             <p> Our goal is to provide the customer with the best service possible and the highest quality products for the right price. </p><br>
             <p> For any reservations for products that are not in stock / coming soon or If you have any queries do not hesitate to <a href="contact.php"></a>contact us</p>

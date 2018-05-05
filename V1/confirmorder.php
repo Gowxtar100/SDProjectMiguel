@@ -1,42 +1,22 @@
 <?php
-// Import PHPMailer 
-    
+        // Import PHPMailer 
+    session_start();
             use PHPMailer\PHPMailer\PHPMailer;
             use PHPMailer\PHPMailer\Exception;
 
             //Load Composer's autoloader
             require 'vendor/autoload.php';
 
-//Connect to DATABASE
-
-$connectusername = 'root';
-$connectpassword = '';
-
-$db = 'gamedatabase';
-
-$db = new mysqli('localhost', $connectusername, $connectpassword, $db) or die("Unable to connect");
-
-//Get values from form
-
-if (isset($_POST['Submit'])) {
-    $Username = $_POST["username"];
-    $EmailAdd = $_POST["email"];
-    $Password = $_POST["password"];
-    $PasswordHashed = hash('sha256',$Password);
-    
-    
-    
-    
-    if(!empty($Username)&&!empty($EmailAdd)&&!empty($Password)){
-     $query = "INSERT INTO `user` (username, email, password) VALUES ('$Username', '$EmailAdd', '$PasswordHashed')";
-    
-        $Topic = 'Registration Completed';
-        $Message = '<br> Dear, '.$Username.'<br><br> Thank you for registering with Concept Box Game Store!';
-    
-        $result = mysqli_query($db, $query);
-    
-        if($result){
-            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+    if (isset($_POST['Submit'])) {
+        $payment = $_POST["payment"];
+        $address = $_POST["address"];
+        $name = $_POST["name"];
+        $price= $_POST["price"];
+        $Topic = "ORDER CONFIRMATION";
+        $Message = "Thank you for your purchase with Concept Game Store !<br>Here is your receipt:<br>Name: ".$name."<br>Address: ".$address."<br>Payment type: ".$payment."<BR>Total cost: $".$price;
+        $Email = $_POST["email"];
+        
+        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
             try {
                 //Server settings
                 //$mail->SMTPDebug = 1;                                 // Enable verbose debug output
@@ -50,7 +30,7 @@ if (isset($_POST['Submit'])) {
 
                 //Recipients
                 $mail->setFrom('GameStoreConceptManager@gmail.com');
-                $mail->addAddress($EmailAdd);     //Address that receives the email
+                $mail->addAddress($Email);     //Address that receives the email
         
 
 
@@ -61,21 +41,17 @@ if (isset($_POST['Submit'])) {
                 $mail->AltBody = strip_tags($Message);
 
                 $mail->send();
-                header('Location: login.php?success=2');
+                
+            $_SESSION["cart"] = array();
+            $_SESSION["totalprice"] = array();
+
+             
+               header('Location: index.php?purchase=1');
             } catch (Exception $e) {
-                header('Location: register.php?error=3');
+                header('Location: checkout.php?purchase=2');
             }
-            
-            
-          
-        }else{
-           header('Location: register.php?error=1');
-        }
     }
-    else{
-        header('Location: register.php?error=2');
-    }
-    
-   
+else{
+    header('Location: index.php');
 }
-?>﻿
+?>

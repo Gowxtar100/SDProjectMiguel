@@ -44,14 +44,14 @@
             </div>
             <ul class="nav navbar-nav">
               <li><a href="index.php">Home</a></li>
-              <li><a href="products.php">Products</a></li>
+              <li  ><a href="products.php">Products</a></li>
               <li><a href="contact.php">Contact Us</a></li>
               <li><a href="help.php">Help</a></li>
               <li><a href="about.php">About Us</a></li>
             </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="viewcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart( <?php echo count($_SESSION["totalprice"]).')' ?></a></li>
-                <li><a href="checkout.php"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
+                <li ><a href="viewcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart( <?php echo count($_SESSION["totalprice"]).')' ?></a></li>
+                <li class="active"><a href="checkout.php"><span class="glyphicon glyphicon-ok"></span>Checkout</a></li>
                 <?php echo $logcheck; ?>
               </ul>
             
@@ -68,15 +68,24 @@
           </div>
         </nav>
         <?php
-        if (isset($_GET['empty'])) {
+            if (isset($_GET['error'])) {
 		 
-		switch($_GET['empty']){
-            case 1 : echo '<div class="alert alert-danger"><strong>Error! </strong>You cannot checkout an empty cart !</div>';
+		switch($_GET['error']){
+            case 1 : echo '<div class="alert alert-danger"><strong>Error! </strong>Please fill in all fields !</div>';
             break;
+                
         }
     }
+        if (isset($_GET['purchase'])) {
+		 
+		switch($_GET['purchase']){
+            case 2 : echo '<div class="alert alert-danger"><strong>Error! </strong>Invalid email address !</div>';
+            break;
+                
+        }
+    }
+        
         ?>
-    
         <div class="container whitebackground">
             <table class="table">
             
@@ -125,14 +134,47 @@
             echo '<div class="alert alert-info"><strong>Total price is: $'.$totalprice;
             echo '</strong></div>';
             if($result == false){ 
-                    echo '<div class="alert alert-info"><strong>Cart is empty </strong></div>';
+                    header('Location: viewcart.php?empty=1');
                 }
-            if (isset($_SESSION['username'])){
-            echo '<div class="alert alert-info"><strong>You receive a 10% registered user discount ! </strong></div>';
-    }
+            
           ?>
-            <a href="clearcart.php" class="btn btn-danger submit">Clear Cart </a>
-            <a href="checkout.php" class="btn btn-danger submit">Checkout </a>
+            
+            <div class="container whitebackground"> 
+            <form action="receipt.php" method="post">
+				<div class="col-md-6 col-md-offset-3 form-line">
+			  			<div class="form-group">
+			  				<label for="name">Please enter recepient's name:</label>
+					    	<input type="text" class="form-control" name="name" placeholder=" Enter name">
+				  		</div>
+					  	<div class="form-group">
+					    	<label for="address">Please enter recepient's address: </label>
+                            <input type="text" class="form-control" name="address" placeholder="Enter address">    
+			  			</div>
+                    <div class="form-group">
+					    	<label for="email">Please enter valid email address: </label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter email">    
+			  			</div>
+                    <div class="form-group">
+					    	<label>Please enter payment type: </label>
+					    	<select name="typepayment">
+                              <option value="visa">VISA</option>
+                              <option value="paypal">PAYPAL</option>
+                              <option value="mastercard">MASTERCARD</option>
+                              <option value="debitcard">DEBIT CARD</option>
+                              <option value="creditcard">CREDIT CARD</option>
+                            </select>
+			  			</div>
+                    <input type="hidden" name="totalprice" value= <?php echo $totalprice ?> />
+                    <button  value="Submit" name="Submit" class="btn btn-danger submit">Order</button><br><br>
+                      
+			  		</div>
+			  		
+            </form>
+        </div>   
+            
+            
+            
+            
         </div>
         
     </body>
