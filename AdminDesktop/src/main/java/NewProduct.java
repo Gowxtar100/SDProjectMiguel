@@ -43,6 +43,7 @@ public class NewProduct extends javax.swing.JFrame {
         genre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Create new product");
 
         jLabel1.setText("Product Name:");
 

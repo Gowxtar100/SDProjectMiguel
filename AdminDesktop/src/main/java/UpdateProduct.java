@@ -45,6 +45,7 @@ public class UpdateProduct extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Update Product");
 
         jLabel1.setText("ID of product being updated:");
 

@@ -92,6 +92,7 @@
 				<tr>
 					<th>Game Name</th>
 					<th>Price</th>
+                    <th>Quantity</th>
         
                   
 				</tr>
@@ -117,6 +118,7 @@
 						echo "<tr>";
 							echo "<td>".$row['name']."</td>";
                             echo "<td>"."$".$row['price']."</td>";
+                            echo "<td>".$_SESSION["quantity"][$row['id']]."</td>";
                         echo "</tr>";
                         
 					}

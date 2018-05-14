@@ -31,6 +31,7 @@ public class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Main Menu");
 
         Clients.setText("View Clients");
         Clients.addActionListener(new java.awt.event.ActionListener() {

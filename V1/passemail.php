@@ -83,7 +83,7 @@
             
             
         }else{
-        //If username or email incorrect 
+        //If email incorrect
         header('Location: loginfail.php');
         
 

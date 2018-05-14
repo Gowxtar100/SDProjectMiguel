@@ -87,6 +87,7 @@
 					<th>Game Name</th>
 					<th>Price</th>
                     <th>Remaning:</th>
+                    <th>Quantity:</th>
                   
 				</tr>
 				<?php
@@ -95,16 +96,20 @@
                         $_SESSION["productprice"] = $row['price'];
                         $_SESSION["productid"] = $row['id'];
                         
+                        
 						echo "<tr>";
+                            echo '<form action="addcart.php" method="post">';
 							echo "<td>".$row['name']."</td>";
                             echo "<td>"."$".$row['price']."</td>";
                             echo "<td>".$row['stock']."</td>";
-                            echo '<td><a href="addcart.php" class="btn btn-danger submit">Add to cart</a></td>';
-							
+                            echo '<td><input type="number" name="quantity" min="1" max="5" required></td>';
+                            echo '<td><button class="btn btn-danger submit" name="Submit">Add to cart</button></td>';
+							echo '</form>';
                         echo "</tr>";
 					}
 					
 				?>
+                
 			</table>
         </div>
         

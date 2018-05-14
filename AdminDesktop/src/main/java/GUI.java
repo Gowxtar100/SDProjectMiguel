@@ -59,6 +59,7 @@ public class GUI extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("View Clients");
         setMaximumSize(new java.awt.Dimension(686, 375));
         setMinimumSize(new java.awt.Dimension(686, 375));
         setPreferredSize(new java.awt.Dimension(686, 375));

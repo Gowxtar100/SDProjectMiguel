@@ -58,7 +58,17 @@
              </div> 
           </div>
         </nav>
-        
+        <?php
+            if (isset($_GET['invalid'])) {
+		 
+		switch($_GET['invalid']){
+            case 1 : echo '<div class="alert alert-danger"><strong>Error! </strong>Invalid email</div>';
+            break;
+          
+        }
+            
+        }
+        ?>
         <div class="container whitebackground"> 
             <form action="contactform.php" method="post">
 				<div class="col-md-6 form-line">
